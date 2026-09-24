@@ -1,0 +1,11 @@
+﻿version: '3.8'
+
+services:
+  pypi:
+    image: pypiserver/pypiserver:latest
+    container_name: my_local_pypi
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./packages:/data/packages
+    command: run -P . -a . /data/packages

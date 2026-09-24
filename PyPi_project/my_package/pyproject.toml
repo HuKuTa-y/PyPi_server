@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "my_super_lib"
+version = "0.1.29"
+description = "Моя первая личная библиотека"
+authors = [
+    {name = "Никита", email = "test@test.com"}
+]
+[tool.setuptools]
+py-modules = ["math_utils"]
