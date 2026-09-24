@@ -1,10 +1,2 @@
 fastapi
-starlette
-pydantic
-pydantic-core
-typing-extensions
-typing-inspection
-annotated-types
-annotated-doc
-anyio
-idna
+uvicorn
