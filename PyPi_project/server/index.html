@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private PyPI Registry</title>
+    <style>
+        :root { --bg: #0d1117; --card: #161b22; --text: #c9d1d9; --accent: #2ea043; --border: #30363d; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 40px; display: flex; flex-direction: column; align-items: center; }
+        .header { text-align: center; margin-bottom: 40px; }
+        .header h1 { font-size: 2.5rem; margin: 0; color: #ffffff; }
+        .header p { color: #8b949e; font-size: 1.1rem; }
+        .badge { background: var(--accent); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .container { width: 100%; max-width: 800px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+        .package { display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid var(--border); transition: background 0.2s; }
+        .package:last-child { border-bottom: none; }
+        .package:hover { background: #1f242c; border-radius: 8px; }
+        .pkg-name { font-weight: 600; font-size: 1.1rem; color: #58a6ff; }
+        .pkg-version { color: #8b949e; font-size: 0.9rem; margin-left: 10px; }
+        .copy-btn { background: #21262d; border: 1px solid var(--border); color: var(--text); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: all 0.2s; }
+        .copy-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔒 Private PyPI Registry</h1>
+        <p>Безопасный, полностью автономный репозиторий пакетов</p>
+        <span class="badge">● ONLINE & SECURE</span>
+    </div>
+    <div class="container">
+        <h3 style="margin-top: 0; color: #ffffff;">Доступные пакеты:</h3>
+        <!-- Pypiserver автоматически добавит сюда список файлов, если это стандартный index, 
+             но для кастомного вида мы оставим инструкцию, как пользоваться -->
+        <div class="package">
+            <div>
+                <span class="pkg-name">my_super_lib</span>
+                <span class="pkg-version">v0.1.27</span>
+            </div>
+            <button class="copy-btn" onclick="navigator.clipboard.writeText('pip install --no-index --find-links=http://localhost:8080/simple/ my_super_lib')">📋 Копировать команду</button>
+        </div>
+        <div class="package">
+            <div>
+                <span class="pkg-name">fastapi</span>
+                <span class="pkg-version">latest</span>
+            </div>
+            <button class="copy-btn" onclick="navigator.clipboard.writeText('pip install --no-index --find-links=http://localhost:8080/simple/ fastapi')">📋 Копировать команду</button>
+        </div>
+        <p style="text-align: center; color: #8b949e; margin-top: 20px; font-size: 0.9rem;">
+            Для просмотра всех файлов перейдите в <a href="/simple/" style="color: #58a6ff;">/simple/</a>
+        </p>
+    </div>
+</body>
+</html>
