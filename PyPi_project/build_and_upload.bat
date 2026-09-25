@@ -6,13 +6,24 @@ call C:\Users\College\Desktop\PyPi_project\test_client\venv\Scripts\activate.bat
 python -m pip install --upgrade pip --quiet
 python -m pip install pytest build twine "pypiserver[passlib]" bandit --quiet
 
-echo [1/6] Bumping version...
-python bump_version.py
+@echo off
+echo [0/7] Checking Python version...
+python --version | findstr /C:"3.14" >nul
 if %errorlevel% neq 0 (
-    echo [ERROR] Version bump failed!
+    echo [ERROR] Python 3.14 is required!
     pause
     exit /b
 )
+echo [OK] Python 3.14 detected
+
+echo [%date% %time%] Build started >> build_log.txt
+echo [1/6] Bumping version...
+python bump_version.py >> build_log.txt 2>&1
+if %errorlevel% neq 0 (
+    echo [%date% %time%] ERROR: Version bump failed >> build_log.txt
+    exit /b
+)
+echo [%date% %time%] Version bumped successfully >> build_log.txt
 
 echo [2/6] Security Scan (Bandit - Local Static Analysis)...
 bandit -r C:\Users\College\Desktop\PyPi_project\my_package -ll
